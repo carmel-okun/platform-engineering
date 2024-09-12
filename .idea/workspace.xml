@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/platformEngineeringCarmel.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boto3/ec2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boto3/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boto3/route53.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boto3/s3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boto3/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boto3/test2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pulumi/pulumi-ec2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pulumi/pulumi-s3.py" afterDir="false" />
+    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="add all project files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boto3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boto3/route53.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/route53.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boto3/s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boto3/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/test2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +24,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;carmel-okun&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/carmel-okun/platform-engineering.git&quot;,
+    &quot;accountId&quot;: &quot;4dcab5f9-175d-476f-92b1-6f35f78f3707&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -45,18 +52,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.ec2.executor": "Debug",
-    "Python.main.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test2.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.ec2.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test2.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\carme\PycharmProjects\platformEngineeringCarmel\boto3" />
@@ -79,6 +86,53 @@
       <option name="presentableId" value="Default" />
       <updated>1725521889941</updated>
     </task>
+    <task id="LOCAL-00001" summary="add all project files">
+      <option name="closed" value="true" />
+      <created>1726092063753</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726092063753</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add all project files" />
+    <option name="LAST_COMMIT_MESSAGE" value="add all project files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/boto3/test2.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

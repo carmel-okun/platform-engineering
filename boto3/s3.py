@@ -58,9 +58,9 @@ def create_s3_bucket(args):
         print(args.bucketName, args.access, "bucket was created successfully")
     except botocore.exceptions.ClientError as e:
         if 'BucketAlreadyExists' in str(e):
-            print("the bucket name", args.bucketName, "already taken")
+            print("the bucket name", args.bucketName, "is already taken")
         elif 'BucketAlreadyOwnedByYou' in str(e):
-            print("the bucket name", args.bucketName, "already owned by you")
+            print("the bucket name", args.bucketName, "is already owned by you")
 
 
 def upload_to_s3_bucket(args):

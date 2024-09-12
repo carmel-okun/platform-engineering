@@ -52,6 +52,11 @@ parser.add_argument(
     type=str,
     help="the path to the file to upload to the s3 bucket"
 )
+parser.add_argument(
+    "--domainName",
+    type=str,
+    help="the domain name of the DNS hosted zone ( www.example.com )"
+)
 args = parser.parse_args()
 
 
