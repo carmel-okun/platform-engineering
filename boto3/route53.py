@@ -1,18 +1,18 @@
 import boto3
 from datetime import datetime
+import ipaddress
 
 
-def manage_DNS_records(args):
+def manage_route53(args):
 
     match args.action:
         case "createZ":
             create_DNS_zone(args)
-        case "createR":
-            create_DNS_record(args)
-        case "updateR":
-            update_DNS_record(args)
-        case "deleteR":
-            delete_DNS_record(args)
+        case "createR" | "updateR" | "deleteR":
+            args.action = args.action[:-1].upper()
+            if args.action == "UPDATE":
+                args.action = "UPSERT"
+            manage_DNS_record(args)
         case _:
             print("action not valid, see --help for more information")
 
@@ -35,19 +35,9 @@ def create_DNS_zone(args):
             },
             CallerReference=str(datetime.timestamp(datetime.now())),
             HostedZoneConfig={
-                # 'Comment': 'string',
+                'Comment': "created by " + 'Pita Pitovsky',  # os.getlogin() or os.getenv('USER' | 'LOGNAME' | 'USERNAME'),
                 'PrivateZone': True
             },
-        )
-        DNS_zone.change_tags_for_resource(
-            ResourceType='hostedzone',
-            ResourceId=response['HostedZone']['Id'].split('/')[-1],
-            AddTags=[
-                {
-                    'Key': 'Owner',
-                    'Value': 'Pita Pitovsky'  # os.getlogin() or os.getenv('USER' | 'LOGNAME' | 'USERNAME')
-                },
-            ]
         )
         print(args.domainName, "DNS hosted zone was created successfully")
 
@@ -60,13 +50,74 @@ def list_hosted_zones():
     return hosted_zones_list
 
 
-def create_DNS_record(args):
-    print("DNS record was created")
+def list_your_hosted_zones():
+    your_hosted_zones_list = []
+    response = boto3.client('route53').list_hosted_zones()
+    for zone in response['HostedZones']:
+        if zone['Config']['Comment'] == "created by " + 'Pita Pitovsky':  # os.getlogin() or os.getenv('USER' | 'LOGNAME' | 'USERNAME'),
+            your_hosted_zones_list.append(zone['Name'][:-1])
+    return your_hosted_zones_list
+
+def manage_DNS_record(args):
+
+    if args.domainName is None or args.recordName is None or args.recordType is None or args.recordValue is None:
+        print("more arguments are expected, see --help for more information")
+    elif args.domainName not in list_your_hosted_zones():
+        print("no such hosted zone as", args.domainName)
+    elif args.recordType.upper() not in ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'PTR', 'SRV', 'SPF', 'NAPTR', 'CAA']:
+        print("Invalid record type, see --help for more information")
+    elif not check_if_value_valid(args):
+        print("Invalid record value, see --help for more information")
+    else:
+        DNS_record = boto3.client('route53')
+        DNS_record.change_resource_record_sets(
+            HostedZoneId=DNS_record.list_hosted_zones_by_name(DNSName=args.domainName + ".")['HostedZones'][0]['Id'].split('/')[-1],
+            ChangeBatch={
+                'Comment': "created by " + 'Pita Pitovsky',  # os.getlogin() or os.getenv('USER' | 'LOGNAME' | 'USERNAME'),
+                'Changes': [
+                    {
+                        'Action': args.action,
+                        'ResourceRecordSet': {
+                            'Name': args.recordName + "." + args.domainName,
+                            'Type': args.recordType.upper(),
+                            'TTL': 60,
+                            'ResourceRecords': [
+                                {
+                                    'Value': args.recordValue
+                                },
+                            ]
+                        }
+                    }
+                ]
+            }
+        )
+        print("DNS record was created")
 
 
-def update_DNS_record(args):
-    print("DNS record was updated")
-
-
-def delete_DNS_record(args):
-    print("DNS record was deleted")
+def check_if_value_valid(args):
+    match args.recordType.upper():
+        case "A" | "AAAA":
+            try:
+                ip_object = ipaddress.ip_address(args.recordValue)
+                return True
+            except ValueError:
+                return False
+        case "CNAME":
+            return False
+        case "MX":
+            return False
+        case "TXT":
+            return False
+        case "PTR":
+            return False
+        case "SRV":
+            return False
+        case "SPF":
+            return False
+        case "NAPTR":
+            return False
+        case "CAA":
+            return False
+        case _:
+            print("Invalid record type, see --help for more information")
+    print("valid")

@@ -57,6 +57,21 @@ parser.add_argument(
     type=str,
     help="the domain name of the DNS hosted zone ( www.example.com )"
 )
+parser.add_argument(
+    "--recordName",
+    type=str,
+    help="the subdomain name of the DNS record"
+)
+parser.add_argument(
+    "--recordType",
+    type=str,
+    help="the type of the DNS record ( 'SOA' | 'A' | 'TXT' | 'NS' | 'CNAME' | 'MX' | 'NAPTR' | 'PTR' | 'SRV' | 'SPF' | 'AAAA' | 'CAA' | 'DS' )"  # 'A' | 'AAAA' | 'CNAME' | 'MX' | 'TXT' | 'PTR' | 'SRV' | 'SPF' | 'NAPTR' | 'CAA'
+)
+parser.add_argument(
+    "--recordValue",
+    type=str,
+    help="the value of the DNS record"
+)
 args = parser.parse_args()
 
 
@@ -67,7 +82,7 @@ def main():
         case "s3":
             s3.manage_s3_buckets(args)
         case "DNS":
-            route53.manage_DNS_records(args)
+            route53.manage_route53(args)
         case _:
             print("resource not valid, see --help for more information")
 
