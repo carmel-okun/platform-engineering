@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="add all route53">
+    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="add all route53 value checks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boto3/route53.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/route53.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boto3/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boto3/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/test2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726149281638</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add all route53 value checks">
+      <option name="closed" value="true" />
+      <created>1726303237642</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726303237642</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,6 +144,7 @@
     <MESSAGE value="add all project files" />
     <MESSAGE value="add route53 createZ" />
     <MESSAGE value="add all route53" />
-    <option name="LAST_COMMIT_MESSAGE" value="add all route53" />
+    <MESSAGE value="add all route53 value checks" />
+    <option name="LAST_COMMIT_MESSAGE" value="add all route53 value checks" />
   </component>
 </project>
