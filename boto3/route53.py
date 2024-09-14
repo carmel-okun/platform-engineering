@@ -1,6 +1,8 @@
 import boto3
 from datetime import datetime
 import ipaddress
+import dns.resolver
+import re
 
 
 def manage_route53(args):
@@ -91,7 +93,7 @@ def manage_DNS_record(args):
                 ]
             }
         )
-        print("DNS record was created")
+        print("DNS record was", args.action + "d successfully")
 
 
 def check_if_value_valid(args):
@@ -102,22 +104,55 @@ def check_if_value_valid(args):
                 return True
             except ValueError:
                 return False
-        case "CNAME":
-            return False
+        case "CNAME" | "PTR":
+            pattern = re.compile(r'^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2,})$')
+            return bool(pattern.match(args.recordValue))
         case "MX":
-            return False
-        case "TXT":
-            return False
-        case "PTR":
-            return False
+            parts = args.recordValue.split()
+            if len(parts) != 2:
+                return False
+            priority, domain = parts
+            pattern = re.compile(r'^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2,})$')
+            return priority.isdigit() and bool(pattern.match(domain))
+        case "TXT" | "SPF":
+            return isinstance(args.recordValue, str)
         case "SRV":
-            return False
-        case "SPF":
-            return False
+            parts = args.recordValue.split()
+            if len(parts) != 6:
+                return False
+            service, proto, priority, weight, port, target = parts
+            pattern = re.compile(r'^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2,})$')
+            return (
+                    service.startswith('_') and
+                    proto.startswith('_') and
+                    priority.isdigit() and
+                    weight.isdigit() and
+                    port.isdigit() and
+                    bool(pattern.match(target))
+            )
         case "NAPTR":
-            return False
+            parts = args.recordValue.split()
+            if len(parts) != 6:
+                return False
+            order, preference, flags, service, regex, replacement = parts
+            return (
+                    order.isdigit() and
+                    preference.isdigit() and
+                    flags in ['u', 's'] and
+                    service.startswith('E2U+') and
+                    replacement.startswith('sip:')
+            )
         case "CAA":
-            return False
+            parts = args.recordValue.split()
+            if len(parts) != 3:
+                return False
+            flags, tag, value = parts
+            pattern = re.compile(r'^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2,})$')
+            return (
+                    flags.isdigit() and
+                    tag in ['issue', 'issuewild', 'iodef'] and
+                    bool(pattern.match(value.strip('"')))
+            )
         case _:
             print("Invalid record type, see --help for more information")
     print("valid")
