@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     parameters {
-        choice(name: "ACTION", choices: ["create", "stop", "start"], description: "the action to make on the ec2 instance")
+        choice(name: "ACTION", choices: ["create", "stop", "start", "ls"], description: "the action to make on the ec2 instance")
         string(name: "INSTANCE_NAME", defaultValue: null, trim: true, description: "the name of the instance to manage")
         choice(name: "INSTANCE_TYPE", choices: ["t2.micro", "t3.nano"], description: "the type of the instance")
         choice(name: "AMI", choices: ["Ubuntu", "AmazonLinux"], description: "the OS for the machine")
