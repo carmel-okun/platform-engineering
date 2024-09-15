@@ -60,6 +60,6 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ## jenkins plugins
 
-download: AWS Credentials
+download: AWS Credentials, Pipeline: AWS Steps
 
 create: AWS Credentials named "AWS Credentials"
