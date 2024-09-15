@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    
+    parameters {
+        choice(name: "ACTION", choices: ["create", "stop", "start"], description: "the action to make on the ec2 instance")
+        string(name: "INSTANCE_NAME", defaultValue: null, trim: true, description: "the name of the instance to manage")
+        choice(name: "INSTANCE_TYPE", choices: ["t2.micro", "t3.nano"], description: "the type of the instance")
+        choice(name: "AMI", choices: ["Ubuntu", "AmazonLinux"], description: "the OS for the machine")
+    }
+
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/carmel-okun/platform-engineering.git']]])     
+            }
+        }
+        stage('run main.py') {
+            steps {
+                withAWS(credentials: 'AWS Credentials', region: 'us-east-1') {
+                    sh "python3 ./boto3/main.py --resource ec2 --action ${params.ACTION} --instanceName ${params.INSTANCE_NAME} --instanceType ${params.INSTANCE_TYPE} --ami ${params.AMI}"
+                }
+            }
+        }
+    }
+}
