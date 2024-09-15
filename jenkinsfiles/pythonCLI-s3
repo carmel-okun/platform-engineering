@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: "ACTION", choices: ["create", "upload", "ls"], description: "the action to make on the s3 bucket")
+        string(name: "BUCKET_NAME", defaultValue: " ", trim: true, description: "the name of the s3 bucket")
+        choice(name: "ACCESS", choices: ["public", "private"], description: "the type of access to the s3 bucket")
+        string(name: "FILE_PATH", defaultValue: " ", trim: true, description: "the path to the file to upload to the s3 bucket")
+    }
+
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/carmel-okun/platform-engineering.git']]])
+            }
+        }
+        stage('run main.py') {
+            steps {
+                withAWS(credentials: 'AWS Credentials', region: 'us-east-1') {
+                    sh "python3 ./boto3/main.py --resource s3 --action ${params.ACTION} --bucketName ${params.BUCKET_NAME} --access ${params.ACCESS} --filePath ${params.FILE_PATH}"
+                }
+            }
+        }
+    }
+}
