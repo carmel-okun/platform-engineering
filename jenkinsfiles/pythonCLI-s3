@@ -3,9 +3,9 @@ pipeline {
 
     parameters {
         choice(name: "ACTION", choices: ["create", "upload", "ls"], description: "the action to make on the s3 bucket")
-        string(name: "BUCKET_NAME", defaultValue: "example", trim: true, description: "the name of the s3 bucket")
+        string(name: "BUCKET_NAME", defaultValue: "None", trim: true, description: "the name of the s3 bucket")
         choice(name: "ACCESS", choices: ["public", "private"], description: "the type of access to the s3 bucket")
-        string(name: "FILE_PATH", defaultValue: "example", trim: true, description: "the path to the file to upload to the s3 bucket")
+        string(name: "FILE_PATH", defaultValue: "None", trim: true, description: "the path to the file to upload to the s3 bucket")
     }
 
     stages {

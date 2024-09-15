@@ -4,9 +4,9 @@ pipeline {
     parameters {
         choice(name: "ACTION", choices: ["createZ", "createR", "updateR", "deleteR"], description: "the action to make on route53")
         string(name: "DOMAIN_NAME", defaultValue: "www.example.com", trim: true, description: "the domain name of the DNS hosted zone")
-        string(name: "RECORD_NAME", defaultValue: "example", trim: true, description: "the subdomain name of the DNS record")
+        string(name: "RECORD_NAME", defaultValue: "None", trim: true, description: "the subdomain name of the DNS record")
         choice(name: "recordType", choices: ["A", "AAAA", "CNAME", "MX", "TXT", "PTR", "SRV", "SPF", "NAPTR", "CAA"], description: "the type of the DNS record")
-        string(name: "RECORD_VALUE", defaultValue: "example", trim: true, description: "the value of the DNS record")
+        string(name: "RECORD_VALUE", defaultValue: "None", trim: true, description: "the value of the DNS record")
     }
 
     stages {
