@@ -13,6 +13,8 @@ def manage_ec2_instances(args):
         case "ls":
             list_ec2_instances()
         case _:
+            print(args.action)
+            print(type(args.action))
             print("action not valid, see --help for more information")
 
 

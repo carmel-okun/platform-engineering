@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="delete test files">
+    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="delete import dns.resolver">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boto3/ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/boto3/ec2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726304854511</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="delete import dns.resolver">
+      <option name="closed" value="true" />
+      <created>1726413135353</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726413135353</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +163,7 @@
     <MESSAGE value="add all route53" />
     <MESSAGE value="add all route53 value checks" />
     <MESSAGE value="delete test files" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete test files" />
+    <MESSAGE value="delete import dns.resolver" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete import dns.resolver" />
   </component>
 </project>
