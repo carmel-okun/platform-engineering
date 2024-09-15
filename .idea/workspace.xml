@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="add all route53 value checks">
+    <list default="true" id="ee78a53c-d6f5-4a88-8b03-bde4edd72e6b" name="Changes" comment="delete test files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726303237642</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="delete test files">
+      <option name="closed" value="true" />
+      <created>1726304854511</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726304854511</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +153,7 @@
     <MESSAGE value="add route53 createZ" />
     <MESSAGE value="add all route53" />
     <MESSAGE value="add all route53 value checks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add all route53 value checks" />
+    <MESSAGE value="delete test files" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete test files" />
   </component>
 </project>

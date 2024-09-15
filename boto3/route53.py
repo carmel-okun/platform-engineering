@@ -1,7 +1,6 @@
 import boto3
 from datetime import datetime
 import ipaddress
-import dns.resolver
 import re
 
 
